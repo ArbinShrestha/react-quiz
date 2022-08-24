@@ -21,12 +21,15 @@ const QuestionCard: FC<Props> = ({
     <p className = "number">
         Question: {questionNr} / {totalQuestions}
     </p>
-    <p dangerouslySetInnerHTML={{__html: question}} />      //setting innerHTML dangerously from API call
-    <div>
+    <p dangerouslySetInnerHTML={{__html: question}} />     
+    
+    <div >
         {answers.map(answer => (
-            <button disabled={userAnswer} onClick = {callback}>
-                <span dangerouslySetInnerHTML={{__html: answer}} />
-            </button>
+            <div key={answer}>
+                <button disabled={userAnswer} onClick = {callback}>
+                    <span dangerouslySetInnerHTML={{__html: answer}} />
+                </button>
+            </div>
         ))}
     </div>
 </div>
