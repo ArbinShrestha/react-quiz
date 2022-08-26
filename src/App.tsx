@@ -4,8 +4,10 @@ import { fetchQuizQuestions } from "./API";
 import QuestionCard from "./components/QuestionCard";
 //types
 import { QuestionState, Difficulty } from "./API";
+//styles
+import {GlobalStyle} from './App.styles'
 
-type AnswerObject = {
+export type AnswerObject = {
   question: string;
   answer: string;
   correct: boolean;
@@ -70,6 +72,8 @@ const App = () => {
   };
 
   return (
+    <>
+    <GlobalStyle />
     <div className="App">
       <h1>React Quiz</h1>
       {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
@@ -77,7 +81,7 @@ const App = () => {
           Start
         </button>
       ) : null}
-      {!gameOver ? <p className="scroe">Score:</p> : null}
+      {!gameOver ? <p className="scroe">Score: {score}</p> : null}
       {loading && <p>Loading Questions.....</p>}
       {!loading && !gameOver && (
         <QuestionCard //props of QuestionCard
@@ -98,6 +102,7 @@ const App = () => {
         </button>
       ) : null}
     </div>
+    </>
   );
 };
 
